@@ -2,6 +2,8 @@
 
 Light the Christmas Tree in your terminal 🎄
 
+![xmas](https://github.com/NARKOZ/xmas/blob/main/screenshot.png?raw=true)
+
 ## Setup `xmas` tree 🎄
 
 ```sh

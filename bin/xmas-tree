@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'paint'
+
+trap('INT') { exit }
+
+XMAS_TREE = <<-XMAS.freeze # rubocop:disable Style/RedundantFreeze
+          x        ☆           x
+     x            .o      x      x
+       x         .*.'.
+                .'.'o'.       x
+          x    o'.*.'.o.
+    x         .'.o.'.'.*.   x    x
+        x    .*.'.o.'.o.'.     x
+  x         o'.'.'.'*'.'.'.        x
+        x  .'.'*'.'o'.'.'o'.  x
+    x           [_____]           x
+          x      \\___/      x       x
+XMAS
+HEADSTAR_REGEX = /(☆)/.freeze
+LEAVES_REGEX = /('?\.'?)/.freeze
+STARS_REGEX = /(\*)/.freeze
+LIGHTS_REGEX = /(o)/.freeze
+POT_REGEX = %r{(\[_+\]|\\_+/)}.freeze
+LIGHTS = [91, *93..96,
+          *%w[magenta navy orange purple tomato violet]].freeze # rubocop:disable Lint/RedundantSplatExpansion
+
+def color(*args)
+  Paint[*args]
+end
+
+at_exit { puts color("\nMerry Christmas!", :green) }
+
+def decorated_xmas_tree
+  out = XMAS_TREE.gsub HEADSTAR_REGEX, color('\1', :yellow, :bright)
+  out.gsub! POT_REGEX,    color('\1', 'coral')
+  out.gsub! LEAVES_REGEX, color('\1', :green)
+  out.gsub! STARS_REGEX,  color('\1', LIGHTS.sample)
+  out.gsub! LIGHTS_REGEX, color('\1', LIGHTS.sample)
+  out.tr('x', '*')
+end
+
+loop do
+  print "\033[0m\033c"
+  puts decorated_xmas_tree
+  $stdout.flush
+  sleep 0.9
+end

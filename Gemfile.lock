@@ -1,0 +1,21 @@
+PATH
+  remote: .
+  specs:
+    xmas (0.1.0)
+      paint (~> 2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    paint (2.2.1)
+    rake (13.0.6)
+
+PLATFORMS
+  x86_64-darwin-20
+
+DEPENDENCIES
+  rake (~> 13.0)
+  xmas!
+
+BUNDLED WITH
+   2.2.33

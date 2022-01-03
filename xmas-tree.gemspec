@@ -11,9 +11,6 @@ Gem::Specification.new do |spec|
   spec.description = 'Light the Christmas Tree in your terminal'
   spec.homepage = 'https://github.com/NARKOZ/xmas'
 
-  spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = spec.homepage
-
   spec.metadata = {
     'homepage_uri' => spec.homepage,
     'source_code_uri' => spec.homepage
